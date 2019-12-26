@@ -33,6 +33,11 @@ dependencies:
   flustars: 0.2.6+1
   # Toast插件 https://github.com/OpenFlutter/flutter_oktoast
   oktoast: ^2.2.1
+  # 网络库  https://github.com/flutterchina/dio
+  dio: 3.0.7
+
+  flutter_package:
+    path: "../flutter_package"
 
 
 dev_dependencies:
