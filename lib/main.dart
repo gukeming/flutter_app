@@ -19,7 +19,7 @@ void main() {
 
 /// This Widget is the main application widget.
 class App extends StatelessWidget {
-  static const String _title = 'app title';
+  static const String _title = 'app';
 
   @override
   Widget build(BuildContext context) {

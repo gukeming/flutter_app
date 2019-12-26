@@ -6,10 +6,7 @@ import 'package:flutter_app/generated/i18n.dart';
 import 'home_page.dart';
 import 'user_page.dart';
 
-List<Widget> pages = <Widget>[
-  HomePage(),
-  UserPage()
-];
+List<Widget> pages = <Widget>[HomePage(), UserPage()];
 
 class TabNavigator extends StatefulWidget {
   TabNavigator({Key key}) : super(key: key);
@@ -33,8 +30,7 @@ class _TabNavigatorState extends State<TabNavigator> {
     return Scaffold(
       body: WillPopScope(
         onWillPop: () async {
-          if (_lastPressed == null ||
-              DateTime.now().difference(_lastPressed) > Duration(seconds: 1)) {
+          if (_lastPressed == null || DateTime.now().difference(_lastPressed) > Duration(seconds: 1)) {
             //两次点击间隔超过1秒则重新计时
             _lastPressed = DateTime.now();
             return false;

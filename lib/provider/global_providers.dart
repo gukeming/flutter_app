@@ -3,14 +3,12 @@ import 'package:flutter_app/provider/theme_provider.dart';
 import 'package:flutter_app/provider/locale_provider.dart';
 
 class GlobalProviders {
-
   static List<SingleChildCloneableWidget> getProviders() {
     /// 独立的model
     final List<SingleChildCloneableWidget> independentServices = [
       ChangeNotifierProvider<ThemeProvider>(
         create: (context) => ThemeProvider(),
       ),
-
       ChangeNotifierProvider<LocaleProvider>(
         create: (context) => LocaleProvider(),
       )
@@ -35,9 +33,9 @@ class GlobalProviders {
     ];
 
     final List<SingleChildCloneableWidget> providers = [
-    ...independentServices,
-    ...dependentServices,
-    ...uiConsumableProviders
+      ...independentServices,
+      ...dependentServices,
+      ...uiConsumableProviders
     ];
 
     return providers;

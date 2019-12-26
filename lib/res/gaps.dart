@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'dimens.dart';
+import 'package:flutter_app/res/dimens.dart';
 
 // 间隔
 class Gaps {

@@ -17,3 +17,5 @@ samples, guidance on mobile development, and a full API reference.
 
 
 ## 安装android studio插件  Flutter i18n
+
+## flutter format line-length 换行120(修改开发工具，保持一样)

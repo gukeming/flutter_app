@@ -19,5 +19,6 @@ class Router {
       case RouteName.tab:
         return NoAnimRouteBuilder(TabNavigator());
     }
+    return null;
   }
 }

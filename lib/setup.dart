@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 class Setup {
-  static const bool kReleaseMode = bool.fromEnvironment('dart.vm.product', defaultValue: false);
+  static const bool releaseMode = bool.fromEnvironment('dart.vm.product', defaultValue: false);
 
   //初始化全局信息
   static Future init(VoidCallback callback) async {
