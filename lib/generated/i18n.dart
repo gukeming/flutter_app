@@ -25,6 +25,7 @@ class S implements WidgetsLocalizations {
   String get autoBySystem => "Auto";
   String get tabHome => "home";
   String get tabUser => "my";
+  String get viewStateMessageNetworkError => "net fail";
 }
 
 class $en extends S {
@@ -39,6 +40,8 @@ class $zh_CN extends S {
 
   @override
   String get tabHome => "首页";
+  @override
+  String get viewStateMessageNetworkError => "网络失败";
   @override
   String get appName => "大圣科技";
   @override
