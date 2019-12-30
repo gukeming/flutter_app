@@ -2,5 +2,6 @@
   "appName": "dasheng technology",
   "autoBySystem": "Auto",
   "tabHome": "home",
-  "tabUser": "my"
+  "tabUser": "my",
+  "viewStateMessageNetworkError": "net fail"
 }

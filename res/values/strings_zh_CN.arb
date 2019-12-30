@@ -2,5 +2,6 @@
   "appName": "大圣科技",
   "autoBySystem": "自动",
   "tabHome": "首页",
-  "tabUser": "我的"
+  "tabUser": "我的",
+  "viewStateMessageNetworkError": "网络失败"
 }

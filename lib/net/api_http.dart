@@ -7,7 +7,7 @@ final Http http = Http();
 class Http extends BaseHttp {
   @override
   void init() {
-    options.baseUrl = 'https://www.pgyer.com/apiv2/';
+    options.baseUrl = 'http://10.150.70.186:3000';
     interceptors.add(AppApiInterceptor());
   }
 }
@@ -36,7 +36,8 @@ class AppApiInterceptor extends InterceptorsWrapper {
   @override
   Future onError(DioError err) {
     NetError error = ExceptionHandle.handleException(err);
-    return super.onError(error);
+    err.error = error;
+    return super.onError(err);
   }
 }
 

@@ -101,15 +101,17 @@ abstract class BaseResponseData {
 
 /// 接口的code没有返回为true的异常
 class NotSuccessException implements Exception {
+  int code = 0;
   String message;
 
   NotSuccessException.fromRespData(BaseResponseData respData) {
+    code = respData.code;
     message = respData.message;
   }
 
   @override
   String toString() {
-    return 'NotExpectedException{respData: $message}';
+    return 'NotExpectedException{code: $code, respData: $message}';
   }
 }
 
