@@ -23,7 +23,6 @@ class ViewStateError {
     message ??= errorMessage;
   }
 
-  /// 以下变量是为了代码书写方便,加入的get方法.严格意义上讲,并不严谨
   get isNetworkError => errorType == ErrorType.networkError;
 
   @override

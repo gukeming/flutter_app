@@ -6,13 +6,13 @@ abstract class ViewStateListProvoder<T> extends ViewStateProvider {
   List<T> list = [];
 
   /// 第一次进入页面loading skeleton
-  initData() async {
+  initData({String url}) async {
     setBusy();
-    await refresh(init: true);
+    await refresh(init: true, url: url);
   }
 
   // 下拉刷新
-  refresh({bool init = false}) async {
+  refresh({bool init = false, String url= ''}) async {
     try {
       List<T> data = await loadData();
       if (data.isEmpty) {

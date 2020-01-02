@@ -27,7 +27,7 @@ abstract class ViewStateRefreshListProvider<T> extends ViewStateListProvoder<T> 
   /// [init] 是否是第一次加载
   /// true:  Error时,需要跳转页面
   /// false: Error时,不需要跳转页面,直接给出提示
-  Future<List<T>> refresh({bool init = false}) async {
+  Future<List<T>> refresh({bool init = false, String url}) async {
     try {
       _currentPageNum = pageNumFirst;
       var data = await loadData(pageNum: pageNumFirst);
@@ -88,7 +88,7 @@ abstract class ViewStateRefreshListProvider<T> extends ViewStateListProvoder<T> 
   }
 
   // 加载数据
-  Future<List<T>> loadData({int pageNum});
+  Future<List<T>> loadData({int pageNum, String url});
 
   @override
   void dispose() {

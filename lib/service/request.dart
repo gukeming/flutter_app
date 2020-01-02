@@ -4,7 +4,7 @@ import 'package:flutter_app/net/error_handle.dart';
 import 'package:flutter_app/entity_factory.dart';
 
 class Request {
-  static Future<T> get<T>(
+  Future<T> get<T>(
     path, {
     Map<String, dynamic> queryParameters,
     Options options,
@@ -30,3 +30,6 @@ class Request {
     return obj;
   }
 }
+
+
+final request = new Request();

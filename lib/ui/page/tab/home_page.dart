@@ -23,11 +23,11 @@ class _HomePageState extends State<HomePage> {
         child: RaisedButton(
             onPressed: () async {
               try {
-                DetailEntity t = await Request.get<DetailEntity>("/users/json");
+                DetailEntity t = await request.get<DetailEntity>("/users/json");
                 print('234');
                 //print(t.toString());
               } catch( e) {
-                print((e as NetError).msg);
+                print((e.error as NetError).msg);
               }
 
               Navigator.of(context).pushNamed(RouteName.detail_info, arguments: {"id": 001});
