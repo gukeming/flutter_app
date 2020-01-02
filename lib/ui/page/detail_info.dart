@@ -6,12 +6,12 @@ import 'package:flutter_app/provider/base/view_state_provider.dart';
 import 'package:flutter_app/provider/common_signal_provider.dart';
 import 'package:flutter_app/model/detail_entity.dart';
 
- loadState(ViewStateProvider model) {
-   if(model.busy) {
+Widget loadState(ViewStateProvider provider) {
+   if(provider.busy) {
      return Center(
        child: Text("DetailInfo loading"),
      );
-   } else if (model.error) {
+   } else if (provider.error) {
 
    }
    return null;
@@ -24,18 +24,19 @@ class DetailInfo extends StatelessWidget {
       appBar: AppBar(
         title: const Text('BottomNavigationBar Sample'),
       ),
-      body: WidgetProvider<CommonSignalProvider<DetailEntity>>(
-        model: CommonSignalProvider<DetailEntity>(),
-        onModelReady: (model) async {
-          await model.initData(url: "/users/json");
+      body: WidgetProvider<CommonSignalProvider<dynamic>>(
+        provider: CommonSignalProvider<dynamic>(),
+        onReady: (provider) async {
+          await provider.initData(url: "/users/json");
         },
-        builder: (context, model, child) {
-          var widget = loadState(model);
+        builder: (context, provider, child) {
+          print("response===" + provider.data.toString());
+          var widget = loadState(provider);
           if(widget != null) {
             return widget;
           }
           return Center(
-            child: Text("DetailInfo" + model.data?.name??''),
+            child: Text("DetailInfo" + provider.data?.name??''),
           );
         },
       ),

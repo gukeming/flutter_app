@@ -20,6 +20,10 @@ class Request {
       cancelToken: cancelToken,
     );
 
+    if(T.toString() == "dynamic") {
+      return response.data;
+    }
+
     T obj;
     try {
       obj = EntityFactory.generateOBJ<T>(response.data);

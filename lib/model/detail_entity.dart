@@ -10,7 +10,7 @@ class DetailEntity {
 		alt = json['alt'];
 		id = json['id'];
 	}
-	
+
 	Map<String, dynamic> toJson() {
 		final Map<String, dynamic> data = new Map<String, dynamic>();
 		data['name'] = this.name;

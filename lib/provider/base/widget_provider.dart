@@ -6,17 +6,17 @@ import 'package:provider/provider.dart';
 /// 方便数据初始化
 class WidgetProvider<T extends ChangeNotifier> extends StatefulWidget {
   final ValueWidgetBuilder<T> builder;
-  final T model;
+  final T provider;
   final Widget child;
-  final Function(T model) onModelReady;
+  final Function(T provider) onReady;
   final bool autoDispose;
 
   WidgetProvider({
     Key key,
     @required this.builder,
-    @required this.model,
+    @required this.provider,
     this.child,
-    this.onModelReady,
+    this.onReady,
     this.autoDispose: true,
   }) : super(key: key);
 
@@ -24,25 +24,25 @@ class WidgetProvider<T extends ChangeNotifier> extends StatefulWidget {
 }
 
 class _ProviderWidgetState<T extends ChangeNotifier> extends State<WidgetProvider<T>> {
-  T model;
+  T provider;
 
   @override
   void initState() {
-    model = widget.model;
-    widget.onModelReady?.call(model);
+    provider = widget.provider;
+    widget.onReady?.call(provider);
     super.initState();
   }
 
   @override
   void dispose() {
-    if (widget.autoDispose) model.dispose();
+    if (widget.autoDispose) provider.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<T>.value(
-      value: model,
+      value: provider,
       child: Consumer<T>(
         builder: widget.builder,
         child: widget.child,
@@ -53,19 +53,19 @@ class _ProviderWidgetState<T extends ChangeNotifier> extends State<WidgetProvide
 
 class WidgetProvider2<A extends ChangeNotifier, B extends ChangeNotifier> extends StatefulWidget {
   final Widget Function(BuildContext context, A model1, B model2, Widget child) builder;
-  final A model1;
-  final B model2;
+  final A provider1;
+  final B provider2;
   final Widget child;
-  final Function(A model1, B model2) onModelReady;
+  final Function(A provider1, B provider2) onReady;
   final bool autoDispose;
 
   WidgetProvider2({
     Key key,
     @required this.builder,
-    @required this.model1,
-    @required this.model2,
+    @required this.provider1,
+    @required this.provider2,
     this.child,
-    this.onModelReady,
+    this.onReady,
     this.autoDispose,
   }) : super(key: key);
 
@@ -73,22 +73,22 @@ class WidgetProvider2<A extends ChangeNotifier, B extends ChangeNotifier> extend
 }
 
 class _ProviderWidgetState2<A extends ChangeNotifier, B extends ChangeNotifier> extends State<WidgetProvider2<A, B>> {
-  A model1;
-  B model2;
+  A provider1;
+  B provider2;
 
   @override
   void initState() {
-    model1 = widget.model1;
-    model2 = widget.model2;
-    widget.onModelReady?.call(model1, model2);
+    provider1 = widget.provider1;
+    provider2 = widget.provider2;
+    widget.onReady?.call(provider1, provider2);
     super.initState();
   }
 
   @override
   void dispose() {
     if (widget.autoDispose) {
-      model1.dispose();
-      model2.dispose();
+      provider1.dispose();
+      provider2.dispose();
     }
     super.dispose();
   }
@@ -97,8 +97,8 @@ class _ProviderWidgetState2<A extends ChangeNotifier, B extends ChangeNotifier> 
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider<A>.value(value: model1),
-          ChangeNotifierProvider<B>.value(value: model2),
+          ChangeNotifierProvider<A>.value(value: provider1),
+          ChangeNotifierProvider<B>.value(value: provider2),
         ],
         child: Consumer2<A, B>(
           builder: widget.builder,
